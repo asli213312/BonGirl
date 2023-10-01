@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7d13385a4f38c03499df0b2a731d4a47
+  m_SerializeEntries:
+  - m_GUID: 7d7e87d0b63964c4f9217502ad68e13f
+    m_Address: Assets/_BonGirl_/Runtime/Localization/Table Collections/UI Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: bac0d5a43363ee545889825ea3a1c1ae
+    m_Address: Assets/_BonGirl_/Runtime/Localization/Table Collections/Working_UI
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: d928b3fa73b927544b1f46d476f7b297
+    m_Address: Assets/_BonGirl_/Runtime/Localization/Table Collections/Prefab String
+      Table/Prefab String Table Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: d117c4b83251aaa4f9644176dc0ce7ed, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fac34660f2fc1e64692edeee23f1a0c0, type: 2}
+    - {fileID: 11400000, guid: c830f81ddd376614dbede2f04dc16163, type: 2}
