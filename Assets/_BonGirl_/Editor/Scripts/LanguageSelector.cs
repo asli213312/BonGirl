@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor.Localization;
+using UnityEngine.Events;
 using UnityEngine.Localization.Settings;
 
 namespace _BonGirl_.Editor.Scripts
 {
     public class LanguageSelector : MonoBehaviour
     {
+        private Color _startColor;
+        private Text _textClicked;
+        
         public void SetLocale(string language)
         {
             switch (language)
@@ -40,6 +45,20 @@ namespace _BonGirl_.Editor.Scripts
                     LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];                        
                     break;
             }
+        }
+
+        public void SetHolder(Text textClick)
+        {
+            _textClicked = textClick;
+            _startColor = textClick.color;
+            textClick.color = Color.green;
+            
+            Invoke("ResetColor", 0.5f);   
+        }
+
+        private void ResetColor()
+        {
+            _textClicked.color = _startColor;
         }
     }
 }

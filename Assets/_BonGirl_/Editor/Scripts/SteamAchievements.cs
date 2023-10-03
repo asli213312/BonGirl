@@ -5,30 +5,27 @@ namespace _BonGirl_.Editor.Scripts
 {
     public class SteamAchievements : MonoBehaviour
     {
-        [SerializeField] private string[] achievements;
-        
         private bool _isStatsReceived;
         private bool _isAchievementsCleared;
         private bool _isAchievementsStatusUpdated;
         private bool _isStatsStored;
 
-        private string _achievementName = "Girl_1";
-
-        private void Start()
+        public void GainAchievement(string achievementName)
         {
             RequestStats();
-            ClearAchievement(_achievementName);
-            SetAchievement(_achievementName);
+
+            ClearAchievement(achievementName);
+            SetAchievement(achievementName);
         }
 
-        private void RequestStats()
+        public void RequestStats()
         {
             _isStatsReceived = Steamworks.SteamUserStats.RequestCurrentStats();
             
             Debug.Log("Is stat received: " + _isStatsReceived);
         }
 
-        private void ClearAchievement(string achievementName)
+        public void ClearAchievement(string achievementName)
         {
             _isAchievementsCleared = Steamworks.SteamUserStats.ClearAchievement(achievementName);
 
@@ -37,7 +34,7 @@ namespace _BonGirl_.Editor.Scripts
             StoreStats();
         }
 
-        private void SetAchievement(string achievementName)
+        public void SetAchievement(string achievementName)
         {
             _isAchievementsStatusUpdated = Steamworks.SteamUserStats.SetAchievement(achievementName);
                 

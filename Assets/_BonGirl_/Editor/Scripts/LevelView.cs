@@ -99,6 +99,7 @@ namespace _BonGirl_.Editor.Scripts
                 }
 
                 newDifferentImage.Initialize(_differenceCheckers, _differenceHinter, needEnableDifferenceButtons);
+                newDifferentImage.InitSoundInvoker(_levelSelector.SoundInvoker);
                 newDifferentImage.OnDifferenceFound += ActivateNextState;
 
                 if (i > 0)
@@ -140,6 +141,7 @@ namespace _BonGirl_.Editor.Scripts
                 _levelSelector.CurrentLevel.NextStateButton.onClick.AddListener(_previewer.SetPreviews);
 
                 _levelIsCompleted = true;
+
                 levelData.Locked = false;
 
                 Debug.Log("level Completed");
@@ -224,10 +226,4 @@ namespace _BonGirl_.Editor.Scripts
             gameObject.SetActive(false);
         }
     }
-}
-
-[Serializable]
-public class ContainerDifferenceCheckers
-{
-    public DifferenceChecker[] Checkers;
 }

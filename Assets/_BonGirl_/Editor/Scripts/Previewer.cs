@@ -55,7 +55,19 @@ namespace _BonGirl_.Editor.Scripts
                 SetNextButtonActive(true);
             
             if (IsMaxLevel()) nextLevelButton.interactable = false;
-            
+
+            if (!levelSelector.CurrentLevel.LevelData.AchCompleted && levelSelector.CurrentLevel.IsGallery == false)
+            {
+                SteamAchievements steamAchievements = FindObjectOfType<SteamAchievements>();
+                if (steamAchievements != null)
+                {
+                    string achName = "Girl_" + levelSelector.CurrentLevel.LevelData.LevelIndex;
+                    steamAchievements.GainAchievement(achName);
+                }
+
+                levelSelector.CurrentLevel.LevelData.AchCompleted = true;
+            }
+
             Debug.Log("Previews were installed");
         }
 

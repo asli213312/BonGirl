@@ -7,6 +7,7 @@ namespace _BonGirl_.Editor.Scripts
     public class LevelSelector : MonoBehaviour
     {
         [Header("Data")] 
+        [SerializeField] private SoundInvoker soundInvoker;
         [SerializeField] private Previewer previewer;
         [SerializeField] private Canvas mainCanvas;
         [SerializeField] private LevelSelectorPreview levelSelectorPreviewPrefab;
@@ -16,6 +17,7 @@ namespace _BonGirl_.Editor.Scripts
         [SerializeField] private GalleryData data;
         [SerializeField] private GameConfig gameConfig;
         
+        public SoundInvoker SoundInvoker => soundInvoker;
         public GameConfig GameConfig => gameConfig;
         public GalleryData GalleryData => data;
         public GameObject SelectorPanel => selectorPanel;
@@ -27,6 +29,8 @@ namespace _BonGirl_.Editor.Scripts
         private void Awake()
         {
             InitializeSelector();
+            
+            soundInvoker.Initialize(this);
         }
 
         private void InitializeSelector()

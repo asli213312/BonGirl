@@ -10,11 +10,13 @@ namespace _BonGirl_.Editor.Scripts
         public event Action StateChanged;
 
         private DifferentButton[] _differenceButtons;
-        
+
         public DifferentButton[] DifferenceButtons => _differenceButtons;
         
         private DifferenceChecker[] _differenceCheckers;
         private DifferenceHinter _differenceHinter;
+
+        private SoundInvoker _soundInvoker;
         
         public bool IsFirstState { get; set; }
 
@@ -26,6 +28,11 @@ namespace _BonGirl_.Editor.Scripts
             _differenceCheckers = checker;
             _differenceHinter = hinter;
             _needEnableDifferenceButtons = needEnableDifferenceButtons;
+        }
+
+        public void InitSoundInvoker(SoundInvoker soundInvoker)
+        {
+            _soundInvoker = soundInvoker;
         }
 
         private void Start()
@@ -42,6 +49,7 @@ namespace _BonGirl_.Editor.Scripts
             {
                 _differenceButtons[i].Initialize(_differenceCheckers[i], _differenceHinter);
                 _differenceButtons[i].Button.onClick.AddListener(DifferenceFound);
+                _differenceButtons[i].OnClicked += _soundInvoker.InvokeClip;
                 
                 if (!_needEnableDifferenceButtons)
                     _differenceButtons[i].Button.image.color = Color.clear;    
@@ -71,6 +79,7 @@ namespace _BonGirl_.Editor.Scripts
             foreach (var differentButton in _differenceButtons)
             {
                 differentButton.Button.onClick.RemoveListener(DifferenceFound);
+                differentButton.OnClicked -= _soundInvoker.InvokeClip;
             }
             
             OnDifferenceFound -= _differenceHinter.DisableButton;
