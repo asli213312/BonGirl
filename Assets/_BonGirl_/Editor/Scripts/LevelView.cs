@@ -20,8 +20,9 @@ namespace _BonGirl_.Editor.Scripts
         [Header("Options")]
         [Tooltip("If true, the difference buttons will be interactable at start")]
         [SerializeField] private bool needEnableDifferenceButtons;
-
+        
         private DifferenceHinter _differenceHinter;
+        private DifferentButton _differentButton;
         private DifferenceChecker[] _differenceCheckers;
         public Image BackGround => background;
         public LevelData LevelData => levelData;
@@ -98,7 +99,7 @@ namespace _BonGirl_.Editor.Scripts
                     newDifferentImage.IsFirstState = true;
                 }
 
-                newDifferentImage.Initialize(_differenceCheckers, _differenceHinter, needEnableDifferenceButtons);
+                newDifferentImage.Initialize(_differenceCheckers, _differenceHinter, needEnableDifferenceButtons, originalStates);
                 newDifferentImage.InitSoundInvoker(_levelSelector.SoundInvoker);
                 newDifferentImage.OnDifferenceFound += ActivateNextState;
 
@@ -124,26 +125,30 @@ namespace _BonGirl_.Editor.Scripts
         private void ChangeState()
         {
             SetNextState();
-
+            
             if (_currentDifferentState != 0 && _currentOriginalState != 0)
             {
                 differentStates[_currentDifferentState].gameObject.SetActive(true);
                 originalStates[_currentOriginalState].gameObject.SetActive(true);
                 
-                nextStateButton.interactable = false;
+                DifferentImage previousDifferentImage = differentStates[_currentDifferentState].GetComponent<DifferentImage>();
+                Debug.Log("previousDifferentImage : ",previousDifferentImage);
+                
+                if (!previousDifferentImage.StateIsChanged)
+                    nextStateButton.interactable = false;
+                else
+                    nextStateButton.interactable = true;
             }
             else
             {
                 SetLastImage();
-                
                 nextStateButton.interactable = true;
+                
                 nextStateButton.onClick.AddListener(CloseView);
                 _levelSelector.CurrentLevel.NextStateButton.onClick.AddListener(_previewer.SetPreviews);
+                _levelSelector.CurrentLevel.levelData.Locked = false;
 
                 _levelIsCompleted = true;
-
-                levelData.Locked = false;
-
                 Debug.Log("level Completed");
                 Debug.Log("current level index: " + _levelSelector.CurrentLevel.LevelData.LevelIndex);
             }

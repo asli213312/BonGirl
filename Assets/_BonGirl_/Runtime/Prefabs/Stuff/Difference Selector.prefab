@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 8072260277332536188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ae7b60ac0148bfb84f3f5f071a4298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needHover: 1
+  needHover: 0
   needBack: 0
   animationStart: {fileID: 7400000, guid: 55d523f83a84e6d469b82d4201528237, type: 2}
   animationBack: {fileID: 7400000, guid: 1df5b0198b52236429e113acdc57f038, type: 2}

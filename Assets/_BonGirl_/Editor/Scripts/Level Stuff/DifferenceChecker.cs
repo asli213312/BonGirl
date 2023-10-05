@@ -10,6 +10,7 @@ namespace _BonGirl_.Editor.Scripts
         private void Start()
         {
             CheckerAnimation = GetComponent<ButtonAnimation>();
+            CheckerAnimation.DisableAnimator();
         }
     }
 }

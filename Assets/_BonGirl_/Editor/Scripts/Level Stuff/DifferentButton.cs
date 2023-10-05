@@ -11,6 +11,8 @@ namespace _BonGirl_.Editor.Scripts
 
         private DifferenceChecker _differenceChecker;
         private DifferenceHinter _differenceHinter;
+        
+        public bool IsInitialized { get; set; }
 
         public event Action OnClicked;
 
@@ -24,7 +26,7 @@ namespace _BonGirl_.Editor.Scripts
         {
             _differenceSelector = GetComponentInChildren<DifferenceSelector>();
             _differenceSelector.gameObject.SetActive(false);
-
+            
             OnClicked += _differenceHinter.DisableRect;
             OnClicked += _differenceHinter.ResetTimer;
         }
@@ -42,7 +44,7 @@ namespace _BonGirl_.Editor.Scripts
             _differenceChecker.CheckerAnimation.BeginBackStateAnimation();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             Button.onClick.RemoveListener(OnClick);
             OnClicked -= _differenceHinter.DisableRect;
@@ -54,10 +56,16 @@ namespace _BonGirl_.Editor.Scripts
             Button.interactable = false;
             
             OnClicked?.Invoke();
-            
-            _differenceSelector.gameObject.SetActive(true);
-            _differenceChecker.CheckerAnimation.BeginStartStateAnimation();
+
+            SetStateAfterClicked();
             Debug.Log("Different Found");
+        }
+
+        public void SetStateAfterClicked()
+        {
+            _differenceSelector.gameObject.SetActive(true);
+            AnimationClip startAnimation = _differenceChecker.CheckerAnimation.BeginStartStateAnimation();
+            _differenceChecker.CheckerAnimation.SetModeAnimation(startAnimation, WrapMode.Loop);
         }
     }
 }

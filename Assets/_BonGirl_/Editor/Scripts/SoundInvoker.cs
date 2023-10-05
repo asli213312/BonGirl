@@ -27,6 +27,8 @@ namespace _BonGirl_.Editor.Scripts
         
         private void PlayOneShot(AudioClip clip)
         {
+            if (_audioSource == null) return;
+            
             _audioSource.volume = volume;
             _audioSource.clip = clip;
             _audioSource.PlayOneShot(clip);

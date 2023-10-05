@@ -21,12 +21,12 @@ namespace _BonGirl_.Editor.Scripts
         private Image _disableImage;
         private ButtonAnimation _animator;
 
-        private DifferentButton[] _differentButtons;
+        private List<DifferentButton> _differentButtons;
 
         private float _timer;
         private bool _needResetTimer;
 
-        public void Initialize(DifferentButton[] differentButton)
+        public void Initialize(List<DifferentButton> differentButton)
         {
             _differentButtons = differentButton;
         }
@@ -41,6 +41,8 @@ namespace _BonGirl_.Editor.Scripts
             differenceRect.gameObject.SetActive(false);
             _button.interactable = false;
             _needResetTimer = true;
+            
+            _animator.DisableAnimator();
         }
 
         private void Update()
@@ -99,7 +101,7 @@ namespace _BonGirl_.Editor.Scripts
             differenceRect.transform.position = rectPositionAtButton;
         }
 
-        private Vector3 GetPositionRandomButton(DifferentButton[] differentButtons)
+        private Vector3 GetPositionRandomButton(List<DifferentButton> differentButtons)
         {
             List<DifferentButton> activeButtons = new List<DifferentButton>();
             

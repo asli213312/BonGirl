@@ -15,5 +15,6 @@ MonoBehaviour:
   <PreviewSprite>k__BackingField: {fileID: 21300000, guid: 7e7d8e681ee4c874588732b40dc3ee56, type: 3}
   <LevelView>k__BackingField: {fileID: 7774674598964335989, guid: 11a474117d4c19b459095ce4d295aa1d, type: 3}
   <LevelIndex>k__BackingField: 11
+  <AchCompleted>k__BackingField: 0
   <Locked>k__BackingField: 1
   NeedLock: 1

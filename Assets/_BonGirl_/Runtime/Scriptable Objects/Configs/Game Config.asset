@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df697a723661451a92c2af76569e042e, type: 3}
   m_Name: Game Config
   m_EditorClassIdentifier: 
-  <ExplainerIsInitialized>k__BackingField: 1
+  <ExplainerIsInitialized>k__BackingField: 0
   differenceIsFoundClip: {fileID: 8300000, guid: b6c5caad40f470f48b9347774e5fc30f, type: 3}

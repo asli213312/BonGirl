@@ -16,5 +16,5 @@ MonoBehaviour:
   <LevelView>k__BackingField: {fileID: 7774674598964335989, guid: e686d8be248416d4eb454c63cfee3631, type: 3}
   <LevelIndex>k__BackingField: 2
   <AchCompleted>k__BackingField: 0
-  <Locked>k__BackingField: 0
+  <Locked>k__BackingField: 1
   NeedLock: 1

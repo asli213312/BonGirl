@@ -17,7 +17,6 @@ namespace _BonGirl_.Editor.Scripts
         private void Start()
         {
             _animator = GetComponent<Animator>();
-            _animator.enabled = false;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -37,9 +36,16 @@ namespace _BonGirl_.Editor.Scripts
                 _animator.Play(animationBack.name, 0);
         }
 
-        public void BeginStartStateAnimation()
+        public void SetModeAnimation(AnimationClip clip, WrapMode mode)
+        {
+            clip.wrapMode = mode;
+        }
+
+        public AnimationClip BeginStartStateAnimation()
         {
             SetStateAnimation(animationStart);
+
+            return animationStart;
         }
 
         public void BeginBackStateAnimation()
@@ -51,6 +57,11 @@ namespace _BonGirl_.Editor.Scripts
         {
             _animator.enabled = true;
             _animator.Play(clip.name, 0);
+        }
+        
+        public void DisableAnimator()
+        {
+            _animator.enabled = false;
         }
     }
 }
