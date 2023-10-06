@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _BonGirl_.Editor.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -24,17 +25,17 @@ namespace _BonGirl_.Editor.Scripts
         private void Start()
         {
             explainer.OnExplainerClose += OpenLevelSelector;
-            galleryButton.onClick.AddListener(OpenGallery);
-            nextLevelButton.onClick.AddListener(levelSelector.SpawnNewLevel);
-            nextLevelButton.onClick.AddListener(CloseSelector);
+            galleryButton.AddListener(OpenGallery);
+            nextLevelButton.AddListener(levelSelector.SpawnNewLevel);
+            nextLevelButton.AddListener(CloseSelector);
         }
 
         private void OnDestroy()
         {
             explainer.OnExplainerClose += OpenLevelSelector;
-            galleryButton.onClick.RemoveListener(OpenGallery);
-            nextLevelButton.onClick.RemoveListener(levelSelector.SpawnNewLevel);
-            nextLevelButton.onClick.RemoveListener(CloseSelector);
+            galleryButton.RemoveListener(OpenGallery);
+            nextLevelButton.RemoveListener(levelSelector.SpawnNewLevel);
+            nextLevelButton.RemoveListener(CloseSelector);
         }
 
         public void SetPreviews()
@@ -47,14 +48,14 @@ namespace _BonGirl_.Editor.Scripts
             background.sprite = levelSelector.CurrentLevel.BackGround.sprite;
             
             if (!previewPanel.activeSelf)
-                previewPanel.SetActive(true);
+                previewPanel.Activate();
             
             if (levelSelector.CurrentLevel.IsGallery)
                 SetNextButtonActive(false);
             else
                 SetNextButtonActive(true);
             
-            if (IsMaxLevel()) nextLevelButton.interactable = false;
+            if (IsMaxLevel()) nextLevelButton.gameObject.Deactivate();
 
             if (!levelSelector.CurrentLevel.LevelData.AchCompleted && levelSelector.CurrentLevel.IsGallery == false)
             {
@@ -62,7 +63,12 @@ namespace _BonGirl_.Editor.Scripts
                 if (steamAchievements != null)
                 {
                     string achName = "Girl_" + levelSelector.CurrentLevel.LevelData.LevelIndex;
-                    steamAchievements.GainAchievement(achName);
+                    string testAchName = "ACH_WIN_ONE_GAME";
+                    
+                    if (levelSelector.GameConfig.CheckDefaultGameOnAchievements == false)
+                        steamAchievements.GainAchievement(achName);
+                    else
+                        steamAchievements.GainAchievement(testAchName);
                 }
 
                 levelSelector.CurrentLevel.LevelData.AchCompleted = true;
@@ -83,18 +89,18 @@ namespace _BonGirl_.Editor.Scripts
 
         private void OpenGallery()
         {
-            galleryPanel.SetActive(true);
+            galleryPanel.Activate();
         }
 
         public void OpenLevelSelector()
         {
-            levelSelector.SelectorPanel.SetActive(true);
+            levelSelector.SelectorPanel.Activate();
         }
 
         private void CloseSelector()
         {
-            galleryPanel.SetActive(false);
-            previewPanel.SetActive(false);
+            galleryPanel.Deactivate();
+            previewPanel.Deactivate();
         }
 
         public void SetNextButtonActive(bool active) => nextLevelButton.gameObject.SetActive(active);

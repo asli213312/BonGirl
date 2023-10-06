@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Game Config
   m_EditorClassIdentifier: 
   <ExplainerIsInitialized>k__BackingField: 0
+  CheckDefaultGameOnAchievements: 0
   differenceIsFoundClip: {fileID: 8300000, guid: b6c5caad40f470f48b9347774e5fc30f, type: 3}

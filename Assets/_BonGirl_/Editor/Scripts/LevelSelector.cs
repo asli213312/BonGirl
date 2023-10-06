@@ -75,7 +75,6 @@ namespace _BonGirl_.Editor.Scripts
             if (newLevelView != null)
             {
                 newLevelView.DisplayLevel();
-                newLevelView.NextStateButton.onClick.AddListener(previewer.SetPreviews);
             }
             else
             {

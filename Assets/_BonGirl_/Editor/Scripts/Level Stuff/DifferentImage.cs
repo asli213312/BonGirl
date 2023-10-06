@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _BonGirl_.Editor.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -101,7 +102,7 @@ namespace _BonGirl_.Editor.Scripts
         {
             foreach (var originalButton in _originalButtonsList)
             {
-                originalButton.gameObject.SetActive(false);
+                originalButton.transform.Deactivate();
             }
         }
 
@@ -120,6 +121,8 @@ namespace _BonGirl_.Editor.Scripts
         {
             foreach (var differentButton in _differenceButtons)
             {
+                if (differentButton == null) return;
+                
                 differentButton.Button.onClick.RemoveListener(DifferenceFound);
                 differentButton.OnClicked -= _soundInvoker.InvokeClip;
             }

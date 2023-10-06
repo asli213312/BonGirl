@@ -1,4 +1,5 @@
 ﻿using System;
+using _BonGirl_.Editor.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,6 @@ namespace _BonGirl_.Editor.Scripts
 
         private DifferenceChecker _differenceChecker;
         private DifferenceHinter _differenceHinter;
-        
-        public bool IsInitialized { get; set; }
 
         public event Action OnClicked;
 
@@ -36,7 +35,7 @@ namespace _BonGirl_.Editor.Scripts
             gameObject.SetActive(true);
 
             Button = GetComponent<Button>();
-            Button.onClick.AddListener(OnClick);
+            Button.AddListener(OnClick);
         }
 
         public void ResetChecker()
@@ -46,7 +45,7 @@ namespace _BonGirl_.Editor.Scripts
 
         private void OnDestroy()
         {
-            Button.onClick.RemoveListener(OnClick);
+            Button.RemoveListener(OnClick);
             OnClicked -= _differenceHinter.DisableRect;
             OnClicked -= _differenceHinter.ResetTimer;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _BonGirl_.Editor.Scripts;
+using _BonGirl_.Editor.Scripts.Utility;
 using UnityEditor.Localization;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,8 +58,8 @@ namespace _BonGirl_.Editor.Scripts
             DisplayLevel();
             
             nextStateButton.interactable = false;
-            nextStateButton.onClick.AddListener(ChangeState);
-            backMenuButton.onClick.AddListener(SetBackState);
+            nextStateButton.AddListener(ChangeState);
+            backMenuButton.AddListener(SetBackState);
         }
 
         private void OnDestroy()
@@ -69,7 +70,7 @@ namespace _BonGirl_.Editor.Scripts
                 newDifferentImage.OnDifferenceFound -= ActivateNextState;
             }
             
-            backMenuButton.onClick.RemoveListener(CloseView);
+            backMenuButton.RemoveListener(CloseView);
         }
 
         public void DisplayLevel()
@@ -86,7 +87,7 @@ namespace _BonGirl_.Editor.Scripts
             {
                 if (i > 0)
                 {
-                    originalStates[i].gameObject.SetActive(false);
+                    originalStates[i].gameObject.Deactivate();
                 } 
             }
 
@@ -169,7 +170,7 @@ namespace _BonGirl_.Editor.Scripts
         private void SetState(ref int currentState, List<Image> states, bool forward)
         {
             if (currentState >= 0 && currentState < states.Count)
-                states[currentState].gameObject.SetActive(false);
+                states[currentState].gameObject.Deactivate();
 
             if (forward)
                 currentState = GetNextState(currentState, states.Count);
