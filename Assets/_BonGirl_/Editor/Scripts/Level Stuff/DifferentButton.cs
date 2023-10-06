@@ -19,15 +19,15 @@ namespace _BonGirl_.Editor.Scripts
         {
             _differenceChecker = checker;
             _differenceHinter = hinter;
+            
+            OnClicked += _differenceHinter.DisableRect;
+            OnClicked += _differenceHinter.ResetTimer;
         }
 
         private void Start()
         {
             _differenceSelector = GetComponentInChildren<DifferenceSelector>();
             _differenceSelector.gameObject.SetActive(false);
-            
-            OnClicked += _differenceHinter.DisableRect;
-            OnClicked += _differenceHinter.ResetTimer;
         }
 
         private void OnEnable()

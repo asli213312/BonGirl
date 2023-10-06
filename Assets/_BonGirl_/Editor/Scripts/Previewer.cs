@@ -65,7 +65,7 @@ namespace _BonGirl_.Editor.Scripts
                     string achName = "Girl_" + levelSelector.CurrentLevel.LevelData.LevelIndex;
                     string testAchName = "ACH_WIN_ONE_GAME";
                     
-                    if (levelSelector.GameConfig.CheckDefaultGameOnAchievements == false)
+                    if (levelSelector.GameConfig.SettedDefaultGameForAchievements == false)
                         steamAchievements.GainAchievement(achName);
                     else
                         steamAchievements.GainAchievement(testAchName);

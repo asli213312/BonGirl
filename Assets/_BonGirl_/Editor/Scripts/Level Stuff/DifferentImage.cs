@@ -32,6 +32,8 @@ namespace _BonGirl_.Editor.Scripts
             _differenceHinter = hinter;
             _needEnableDifferenceButtons = needEnableDifferenceButtons;
             _originalStates = originalStates;
+            
+            _differenceButtons = GetComponentsInChildren<DifferentButton>().ToList();
         }
 
         public void InitSoundInvoker(SoundInvoker soundInvoker)
@@ -41,8 +43,6 @@ namespace _BonGirl_.Editor.Scripts
 
         public void Start()
         {
-            _differenceButtons = GetComponentsInChildren<DifferentButton>().ToList();
-
             if (_differenceButtons.Count != _differenceCheckers.Length)
             {
                 Debug.LogError("The number of different buttons doesn't match the number of checkers.");
