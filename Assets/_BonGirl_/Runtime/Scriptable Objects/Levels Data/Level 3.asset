@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e6199fc3db42a8baa11811d399e0f3, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  <PreviewSprite>k__BackingField: {fileID: 21300000, guid: 9bc6af92e3e3137409eb7532ad9f6202, type: 3}
+  <PreviewSprite>k__BackingField: {fileID: 21300000, guid: ff61e45dc0192ed489d3011f9dc3f5c7, type: 3}
   <LevelView>k__BackingField: {fileID: 7774674598964335989, guid: 2a5b76cb1a523164c9b12b7ccc6e8530, type: 3}
   <LevelIndex>k__BackingField: 3
   <AchCompleted>k__BackingField: 0
